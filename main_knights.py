@@ -8,6 +8,7 @@
 
 import knights_knight
 import knights_hitspool
+import os
 
 # initialize
 def welcome():
@@ -19,6 +20,10 @@ def cmdlist():
 
 def getStats(knight_instance):
     return knight_instance.name, knight_instance.hitsDamage, knight_instance.hitsLeft
+
+def log(log_name, log_date, log_time, log_bosscode, log_damage, log_team):
+    with open(os.path.dirname(os.path.abspath(__file__))+'\\knights_data\\log.txt', 'a') as log_file:
+        log_file.write(log_date+','+log_time+','+log_name+','+log_bosscode+','+str(log_damage)+','+log_team+'\n')
 
 def core():
     cmd = input('命令: ')
@@ -90,8 +95,11 @@ def core():
         cmd_time = input('请输入结算的事件, 例如: 12:34: ')
         cmd_bosscode = input('请输入boss代码, 例如: A1: ')
         cmd_damage = input('请输入结算伤害, 例如: 1213076: ')
+        cmd_team = input('请输入队伍的刀型, 例如: 暴击弓深月狗黑骑-借狼: ')
         cmd_bossfileupdate = input('如果需要自动扣减boss当前血量, 请输入bosspool文件名称(以.pkl结尾), 否则请输入\'\': ')
         knight_report.report(cmd_name, cmd_date, cmd_time, cmd_bosscode, int(cmd_damage), cmd_bossfileupdate)
+        # 存log
+        log(cmd_name, cmd_date, cmd_time, cmd_bosscode, int(cmd_damage), cmd_team)
 
     elif cmd == 'bosscurhp':
         cmd_bosscode = input('请输入boss代码, 例如: A1: ')
