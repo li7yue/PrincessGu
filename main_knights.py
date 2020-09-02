@@ -91,7 +91,7 @@ def core():
         cmd_bosscode = input('请输入boss代码, 例如: A1: ')
         cmd_damage = input('请输入结算伤害, 例如: 1213076: ')
         cmd_bossfileupdate = input('如果需要自动扣减boss当前血量, 请输入bosspool文件名称(以.pkl结尾), 否则请输入\'\': ')
-        knight_report.report(cmd_name, cmd_date, cmd_time, cmd_bosscode, cmd_damage, cmd_bossfileupdate)
+        knight_report.report(cmd_name, cmd_date, cmd_time, cmd_bosscode, int(cmd_damage), cmd_bossfileupdate)
 
     elif cmd == 'bosscurhp':
         cmd_bosscode = input('请输入boss代码, 例如: A1: ')

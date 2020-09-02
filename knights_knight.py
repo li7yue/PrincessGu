@@ -56,7 +56,7 @@ class Knight:
 
     def updateCurHp(self, boss_code, damage, boss_file):
         temp_bosspool = boss_bosspool.BossPool()
-        temp_bosspool.setAddress(os.path.dirname(os.path.abspath(__file__)), boss_file)
+        temp_bosspool.setAddress(file_address=os.path.dirname(os.path.abspath(__file__)), file_name=boss_file)
         temp_bosspool.getBossPool()
         curHp = temp_bosspool.pool[boss_code].damageCurrentHealth(damage)
         temp_bosspool.saveBossPool()
